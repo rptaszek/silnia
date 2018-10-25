@@ -17,24 +17,37 @@ long licz_silnie(int podstawa) {
     return silnia;
 }}
 
-bool test_licz_silnie(){
-    if (licz_silnie(0) ==1)
-        if (licz_silnie(1) ==1)
-            if (licz_silnie(2) ==2)
-                if (licz_silnie(5) ==120)
-                printf("test_licz_silnie() przechodzi");
-                return true;
 
-        printf("test_licz_silnie nie działa!");
-        return false;
-
+void test_licz_silnie_0(int licznik) {
+    if (licz_silnie(0) != 1)
+        printf("Test nr %i nie działa", licznik);
 }
+void test_licz_silnie_1(int licznik) {
+    if (licz_silnie(1) != 1)
+        printf("Test nr %i nie działa", licznik);
+}
+void test_licz_silnie_2(int licznik) {
+    if (licz_silnie(2) != 2)
+        printf("Test nr %i nie działa", licznik);
+}
+void test_licz_silnie_5(int licznik) {
+    if (licz_silnie(5) != 120)
+        printf("Test nr %i nie działa", licznik);
+}
+void run_test_pool(){
+    int licznik = 0;
+    test_licz_silnie_0(++licznik);
+    test_licz_silnie_1(++licznik);
+    test_licz_silnie_2(++licznik);
+    test_licz_silnie_5(++licznik);
+
+};
 
 int main()  {
 
     #ifndef TEST
 
-    test_licz_silnie();
+
 
     long wynik;
     long podstawa;
@@ -52,8 +65,9 @@ int main()  {
 
     #else
 
-    test_licz_silnie();
+    run_test_pool();
 
     #endif
+
     return 0;
 }
